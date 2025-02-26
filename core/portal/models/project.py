@@ -18,12 +18,14 @@ class Project(models.Model):
     members = models.ManyToManyField(Member)
 
     state = models.CharField(max_length=255, choices=StateChoices)
-    #image = models.ImageField()    
-    deploy_link = models.URLField()
-    front_repo_link = models.URLField()
-    back_repo_link = models.URLField()
-    design_link = models.URLField()
+    #image = models.ImageField()
+    links = models.JSONField() # two fields: type and URL
     about = models.TextField()
+    # deploy_link = models.URLField()
+    # front_repo_link = models.URLField()
+    # back_repo_link = models.URLField()
+    # design_link = models.URLField()
+    # about = models.TextField()
     
     
     def __str__(self):

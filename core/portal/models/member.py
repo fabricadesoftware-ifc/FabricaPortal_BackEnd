@@ -14,9 +14,9 @@ class Member(models.Model):
         EGRESSO = 'Egresso'
     
     name = models.CharField(max_length=255)
-    social_medias = models.JSONField()
+    social_media = models.JSONField()
     type = models.CharField(max_length=20, choices=TypeChoices)
-    state = models.CharField(max_length=20, choices=StateChoices)
+    status = models.CharField(max_length=20, choices=StateChoices)
     biography = models.TextField()
     #image = models.ImageField()
     
