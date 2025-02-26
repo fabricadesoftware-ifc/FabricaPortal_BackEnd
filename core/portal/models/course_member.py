@@ -9,8 +9,9 @@ class CourseMember(models.Model):
     initial_date = models.DateField(auto_now_add=False)
     final_date = models.DateField(auto_now_add=False, null=True, blank=True)
     
-    #def __str__(self):
-    #    return self.member
+    def __str__(self):
+        return self.member.name
+
     
     class Meta:
         db_table = 'course_member'
