@@ -11,6 +11,7 @@ class CourseMember(models.Model):
     
     def __str__(self):
         return self.member.name
+
     
     class Meta:
         db_table = 'course_member'

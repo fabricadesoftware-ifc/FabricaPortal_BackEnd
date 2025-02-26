@@ -16,6 +16,7 @@ class Project(models.Model):
     areas = models.JSONField()
     advisor = models.ForeignKey(Member, on_delete=models.PROTECT, related_name='advisor')
     members = models.ManyToManyField(Member)
+
     state = models.CharField(max_length=255, choices=StateChoices)
     #image = models.ImageField()    
     deploy_link = models.URLField()
