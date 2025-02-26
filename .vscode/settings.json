@@ -4,5 +4,26 @@
   ],
   "python.autoComplete.extraPaths": [
     "${workspaceFolder}/__pypackages__/3.13/lib"
-  ]
+  ],
+
+  "workbench.colorCustomizations": {
+    "activityBar.activeBackground": "#ff6600",
+    "activityBar.background": "#ff6600",
+    "activityBar.foreground": "#000000",
+    "activityBar.inactiveForeground": "#00000099",
+    "activityBarBadge.background": "#000000",
+    "activityBarBadge.foreground": "#ff6600",
+    "commandCenter.border": "#00000099",
+    "sash.hoverBorder": "#ff6600",
+    "statusBar.background": "#cc5200",
+    "statusBar.foreground": "#000000",
+    "statusBarItem.hoverBackground": "#ff6600",
+    "statusBarItem.remoteBackground": "#cc5200",
+    "statusBarItem.remoteForeground": "#000000",
+    "titleBar.activeBackground": "#cc5200",
+    "titleBar.activeForeground": "#000000",
+    "titleBar.inactiveBackground": "#cc520099",
+    "titleBar.inactiveForeground": "#00000099"
+  },
+  "peacock.remoteColor": "#cc5200"
 }
