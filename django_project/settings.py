@@ -2,6 +2,9 @@ from pathlib import Path
 import os
 from dotenv import load_dotenv
 from datetime import timedelta
+import cloudinary
+import cloudinary.uploader
+import cloudinary.api
 
 load_dotenv()
 
@@ -22,6 +25,7 @@ INSTALLED_APPS = [
     'django.contrib.messages',
     'django.contrib.staticfiles',
     'rest_framework',
+    'core.uploader',
     'core.authentication',
     'core.portal',
     'rest_framework_simplejwt'
@@ -115,3 +119,15 @@ EMAIL_PORT = os.getenv("EMAIL_PORT")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "fabricadesoftware.araquari@ifc.edu.br")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+
+CLOUD_NAME = os.getenv('CLOUD_NAME')
+API_KEY = os.getenv('API_KEY')
+API_SECRET = os.getenv('API_SECRET')
+
+cloudinary.config(
+    cloud_name=CLOUD_NAME,
+    api_key=API_KEY,
+    api_secret=API_SECRET
+)
+

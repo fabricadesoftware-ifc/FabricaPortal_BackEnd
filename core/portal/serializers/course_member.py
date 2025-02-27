@@ -5,4 +5,4 @@ from core.portal.models import CourseMember
 class CourseMemberSerializer(serializers.ModelSerializer):
     class Meta:
         model = CourseMember
-        fields = ['id', 'member', 'course', 'initial_date', 'final_date']
+        fields = ['id', 'member', 'course', 'initial_year', 'final_year']
