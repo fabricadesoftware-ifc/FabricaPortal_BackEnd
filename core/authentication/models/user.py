@@ -10,9 +10,16 @@ class User(AbstractUser):
     name = models.CharField(_('name'), max_length=150)
     date_joined = models.DateTimeField(_('date joined'), auto_now_add=True)
     last_login = models.DateTimeField(_('last login'), auto_now=True)
+    verification_code = models.CharField(_('verification code'), max_length=6, blank=True, null=True)
+    is_verified = models.BooleanField(_('is verified'), default=False)
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = []
+
+    def save(self, *args, **kwargs):
+        if not self.password.startswith('pbkdf2_sha256$'):
+            self.set_password(self.password)
+        super().save(*args, **kwargs)
 
     objects = CustomUserManager()
 
