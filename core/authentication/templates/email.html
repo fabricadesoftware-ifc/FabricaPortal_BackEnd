@@ -5,50 +5,92 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <style>
         body {
-            font-family: Arial, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             margin: 0;
             padding: 0;
+            background-color: #f5f5f5;
+            color: #333;
+            line-height: 1.6;
         }
-        .header, .footer {
-            background-color: #34a853; /* Verde escuro */
+        .wrapper {
+            max-width: 600px;
+            margin: 20px auto;
+            border-radius: 8px;
+            overflow: hidden;
+            box-shadow: 0 4px 15px rgba(0, 0, 0, 0.15);
+        }
+        .header {
+            background-color: #34a853;
             color: #ffffff;
-            padding: 10px 20px;
+            padding: 20px;
             text-align: center;
         }
+        .header h1 {
+            margin: 0;
+            font-size: 24px;
+        }
         .container {
-            width: 100%;
-            padding: 20px;
-            background-color: #ffffff; /* Branco */
-            color: #000000;
-            border-radius: 10px;
-            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+            padding: 30px;
+            background-color: #ffffff;
         }
-        h2 {
-            color: #000000; /* Preto */
+        .container h2 {
+            color: #333;
+            margin-top: 0;
+            margin-bottom: 20px;
+            font-size: 20px;
         }
-        p {
-            color: #000000; /* Preto */
+        .container p {
+            margin-bottom: 15px;
+        }
+        .btn-aceitar {
+            display: inline-block;
+            background-color: #34a853;
+            color: #ffffff;
+            text-decoration: none;
+            padding: 10px 25px;
+            border-radius: 4px;
+            margin-top: 10px;
+            font-weight: bold;
+            transition: background-color 0.3s;
+        }
+        .btn-aceitar:hover {
+            background-color: #2d9047;
+        }
+        .footer {
+            background-color: #34a853;
+            color: #ffffff;
+            padding: 15px;
+            text-align: center;
+            font-size: 14px;
+        }
+        .footer p {
+            margin: 5px 0;
+        }
+        .logo {
+            margin-bottom: 10px;
         }
     </style>
-    <title>Trabalho Aceito Oritador</title>
+    <title>Solicitação de conta</title>
 </head>
 <body>
-    <div class="header">
-        <h1>Convite de Grupo</h1>
-    </div>
-    <div class="container">
-        <h2>Ola</h2>
-        <p>
-            Solicitação para criação de conta
-        </p>
-        <p>
-            O doscente, name solicitou a criação de uma conta no sistema
-            Para aceitar o convite, clique aqui: <a href="link">Aceitar Convite</a>
-        </p>
-    </div>
-    <div class="footer">
-        <p>Este é um email automático. Por favor, não responda.</p>
-        <p>Caso tenha dúvidas, entre em contato com o suporte.</p>
+    <div class="wrapper">
+        <div class="header">
+            <h1>Convite de Grupo</h1>
+        </div>
+        <div class="container">
+            <h2>Olá!</h2>
+            <p>Você recebeu uma solicitação para criação de conta.</p>
+            <p>O docente, <strong>name</strong>, solicitou a criação de uma conta no sistema.</p>
+            <p>
+                Para aceitar o convite, clique no botão abaixo:
+                <br>
+                <a href="link" class="btn-aceitar">Aceitar Convite</a>
+            </p>
+        </div>
+        <div class="footer">
+            <p>Este é um e-mail automático. Por favor, não responda.</p>
+            <p>Caso tenha dúvidas, entre em contato com o suporte.</p>
+        </div>
     </div>
 </body>
 </html>
