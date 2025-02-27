@@ -2,10 +2,14 @@ from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
 
+from django_project.permission import VerifyCustomPermission
+
 from core.authentication.models import User
 
 
 class VerifyUserView(APIView):
+    permission_classes = [VerifyCustomPermission]
+    
     def get(self, request, *args, **kwargs):
         try:
             email = request.query_params.get('email')
@@ -19,6 +23,7 @@ class VerifyUserView(APIView):
                 return Response({'message': 'Usuário já verificado'}, status=status.HTTP_400_BAD_REQUEST)
             else:
                 user.is_verified = True
+                user.verification_code = None
                 user.save()
                 return Response({'message': 'Usuário verificado com sucesso'}, status=status.HTTP_200_OK)
             

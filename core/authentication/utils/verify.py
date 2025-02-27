@@ -15,7 +15,7 @@ class Verify:
                 userid = user.id
                 user.verification_code = code
                 user.save()
-                send_verification_code(userid, code)
+                send_verification_code.delay(userid, code)
             except Exception as e:
                 return logging.error('Erro ao enviar código de verificação', e)
             

@@ -4,9 +4,11 @@ from django_project.settings import EMAIL_HOST_USER, BASE_DIR
 from django.utils.html import strip_tags
 import logging
 from core.authentication.models import User
+from django_project.celery import app
 
 logger = logging.getLogger(__name__)
 
+@app.task(queue="emails")
 def send_verification_code(userid, code):
     try:
         user = User.objects.get(id=userid)
