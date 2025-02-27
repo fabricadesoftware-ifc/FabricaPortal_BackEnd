@@ -24,11 +24,12 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    "django_celery_results",
     'rest_framework',
+    'rest_framework_simplejwt',
     'core.uploader',
     'core.authentication',
     'core.portal',
-    'rest_framework_simplejwt'
 ]
 
 MIDDLEWARE = [
@@ -86,6 +87,16 @@ AUTH_PASSWORD_VALIDATORS = [
     },
 ]
 
+REST_FRAMEWORK = {
+    "DEFAULT_AUTHENTICATION_CLASSES": (
+        "rest_framework_simplejwt.authentication.JWTAuthentication",
+    ),
+        "DEFAULT_PERMISSION_CLASSES": [
+        'django_project.permission.CustomGeneralPermission',  
+    ]
+}
+
+
 AUTH_USER_MODEL = 'authentication.User'
 
 LANGUAGE_CODE = 'pt-br'
@@ -119,6 +130,32 @@ EMAIL_PORT = os.getenv("EMAIL_PORT")
 EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "fabricadesoftware.araquari@ifc.edu.br")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
+
+
+CELERY_BROKER_URL = 'amqp://joao:batata12@localhost:5672//'
+
+CELERY_RESULT_BACKEND = "django-db"
+
+CELERY_ACCEPT_CONTENT = ["json"]
+CELERY_TASK_SERIALIZER = "json"
+
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+CELERY_BROKER_CONNECTION_RETRY_ON_STARTUP = True
+
+TASK_ALWAYS_EAGER = False
+
+CELERY_TASK_QUEUES = {
+    'emails': {
+        'exchange': 'emails',
+        'routing_key': 'emails',
+        'queue_arguments': {'x-max-priority': 10, 'x-message-ttl': 60000}
+    }
+}
+
+CELERY_TASK_DEFAULT_QUEUE = 'emails'
+CELERY_TASK_DEFAULT_EXCHANGE = 'emails'
+CELERY_TASK_DEFAULT_ROUTING_KEY = 'emails'
 
 
 CLOUD_NAME = os.getenv('CLOUD_NAME')

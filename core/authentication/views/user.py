@@ -4,6 +4,7 @@ from core.authentication.models import User
 from core.authentication.serializers import UserSerializer
 from rest_framework_simplejwt.views import TokenObtainPairView
 from core.authentication.serializers.user import CustomTokenObtainPairSerializer
+from django_project.permission import UserCustomPermission
 
 class CustomTokenObtainPairView(TokenObtainPairView):
     serializer_class = CustomTokenObtainPairSerializer
@@ -12,6 +13,9 @@ class UserViewSet(viewsets.ModelViewSet):
     queryset = User.objects.all()
     serializer_class = UserSerializer
     filter_backends = [SearchFilter, OrderingFilter]
+    permission_classes = [UserCustomPermission]
     search_fields = ['email', 'name']
     ordering_fields = ['email', 'name', 'date_joined', 'last_login']
     ordering = ['email']
+    
+    
