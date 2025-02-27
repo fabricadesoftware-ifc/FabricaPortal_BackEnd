@@ -6,10 +6,10 @@ from core.authentication.models import User
 
 
 class VerifyUserView(APIView):
-    def post(self, request):
+    def get(self, request, *args, **kwargs):
         try:
-            email = request.data.get('email')
-            code = request.data.get('code')
+            email = request.query_params.get('email')
+            code = request.query_params.get('code')
             user = User.objects.get(email=email)
             if user is None:
                 return Response({'message': 'Usuário não encontrado'}, status=status.HTTP_404_NOT_FOUND)

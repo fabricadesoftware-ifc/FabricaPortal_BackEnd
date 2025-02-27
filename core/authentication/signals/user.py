@@ -11,15 +11,14 @@ logger = logging.getLogger(__name__)
 def send_verification_email_signal(sender, instance, created, **kwargs):
     try:
         logger.info('Tentando enviar código de verificação')
-        print(f"Signal ativado para usuário {instance.email}, created={created}")
+        print(f"Signal ativado para usuário {instance.name}, created={created}")
         
         if created:
-            code = Verify.send_code('fabio.moura@ifc.edu.br')
-            print(f"Código de verificação enviado: {code}")
+            Verify.send_code(instance.id)
             
-        logger.info(f'Código de verificação enviado para {instance.email}')
+        logger.info(f'Código de verificação enviado para {instance.id}')
     except Exception as e:
-        logger.error(f'Erro ao enviar código de verificação: {str(e)}')
-        print(f'Erro ao enviar código de verificação: {str(e)}')
+        logger.error(f'Erro ao enviar verificação de conta: {str(e)}')
+        print(f'Erro ao enviar verificação de conta: {str(e)}')
 
 
