@@ -30,6 +30,7 @@ INSTALLED_APPS = [
     'core.uploader',
     'core.authentication',
     'core.portal',
+    "core"
 ]
 
 MIDDLEWARE = [

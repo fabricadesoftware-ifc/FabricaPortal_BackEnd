@@ -3,6 +3,7 @@ from rest_framework import serializers
 from core.portal.models import Project
 from core.uploader.models import Image
 from core.uploader.serializers import ImageUploadSerializer
+from core.portal.serializers.member import MemberListSerializer
 
 class ProjectListSerializer(serializers.ModelSerializer):
     image_attachment_key = serializers.SlugRelatedField(
@@ -13,6 +14,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
         write_only=True,
     )
     image = ImageUploadSerializer(required=False, read_only=True)
+    members = MemberListSerializer(many=True, read_only=True)
     class Meta:
         model = Project
         fields = ['id', 'name', 'areas', 'members', 'state', 'image', 'image_attachment_key']
@@ -29,6 +31,7 @@ class ProjectWriteSerializer(serializers.ModelSerializer):
         
 class ProjectDetailSerializer(serializers.ModelSerializer):
     image = ImageUploadSerializer(required=False)
+    members = MemberListSerializer(many=True, read_only=True)
     class Meta:
         model = Project
         fields = ['id', 'name', 'initial_date', 'final_date', 'areas', 'advisor', 'members', 'state', 'links', 'about', 'image']
