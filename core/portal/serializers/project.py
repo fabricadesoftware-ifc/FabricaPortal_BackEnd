@@ -15,7 +15,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
     image = ImageUploadSerializer(required=False, read_only=True)
     class Meta:
         model = Project
-        fields = ['id', 'name', 'areas', 'members', 'state', 'image']
+        fields = ['id', 'name', 'areas', 'members', 'state', 'image', 'image_attachment_key']
         
 class ProjectWriteSerializer(serializers.ModelSerializer):
     class Meta:

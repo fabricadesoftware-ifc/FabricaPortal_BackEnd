@@ -21,7 +21,7 @@ class MemberWriteSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Member
-        fields = ['name', 'social_media', 'type', 'status', 'biography', 'image_attachment_key']
+        fields = ['name', 'social_media', 'type', 'status', 'biography', 'image']
         
 class MemberDetailSerializer(serializers.ModelSerializer):
     image = ImageUploadSerializer(required=False)
