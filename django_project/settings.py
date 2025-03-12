@@ -33,6 +33,7 @@ INSTALLED_APPS = [
     'core.portal',
     "core",
     "corsheaders",
+    'django_filters',
 ]
 
 
