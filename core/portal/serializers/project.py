@@ -17,7 +17,7 @@ class ProjectListSerializer(serializers.ModelSerializer):
     members = MemberListSerializer(many=True, read_only=True)
     class Meta:
         model = Project
-        fields = ['id', 'name', 'areas', 'members', 'state', 'image', 'image_attachment_key']
+        fields = ['id', 'name', 'areas', 'members', 'state', 'image', 'image_attachment_key', "about"]
         
 class ProjectWriteSerializer(serializers.ModelSerializer):
     class Meta:
