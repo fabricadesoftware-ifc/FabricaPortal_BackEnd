@@ -16,6 +16,7 @@ DEBUG = os.getenv('DEBUG', 'False')
 
 ALLOWED_HOSTS = ['*']
 
+APPEND_SLASH = False
 
 INSTALLED_APPS = [
     'django.contrib.admin',
@@ -30,10 +31,14 @@ INSTALLED_APPS = [
     'core.uploader',
     'core.authentication',
     'core.portal',
+    "core",
+    "corsheaders",
+    'django_filters',
 ]
 
+
 MIDDLEWARE = [
-    'corsheaders.middleware.CorsMiddleware', 
+    'corsheaders.middleware.CorsMiddleware',  
     'django.middleware.security.SecurityMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
@@ -157,6 +162,28 @@ CELERY_TASK_DEFAULT_QUEUE = 'emails'
 CELERY_TASK_DEFAULT_EXCHANGE = 'emails'
 CELERY_TASK_DEFAULT_ROUTING_KEY = 'emails'
 
+
+CORS_ALLOW_ALL_ORIGINS = True 
+CORS_ALLOW_CREDENTIALS = True  
+
+
+CORS_ALLOW_HEADERS = [
+    'authorization',
+    'content-type',
+    'x-requested-with',
+    'accept',
+    'origin',
+    'x-csrftoken',
+]  
+
+CORS_ALLOW_METHODS = [
+    'GET',
+    'POST',
+    'PUT',
+    'PATCH',
+    'DELETE',
+    'OPTIONS'
+]  
 
 CLOUD_NAME = os.getenv('CLOUD_NAME')
 API_KEY = os.getenv('API_KEY')
