@@ -90,7 +90,7 @@ class Command(BaseCommand):
         # 7. Cria projetos (Project) garantindo relação com membros, áreas e imagens
         project_states = ["Não Iniciado", "Em Desenvolvimento", "Concluído", "Cancelado"]
         projects = []
-        for _ in range(5):
+        for _ in range(15):
             # Seleciona ao menos uma área para o projeto
             selected_areas = random.sample(areas, random.randint(1, len(areas)))
             project = Project.objects.create(
