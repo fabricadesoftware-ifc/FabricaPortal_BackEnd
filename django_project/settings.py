@@ -12,7 +12,7 @@ BASE_DIR = Path(__file__).resolve().parent.parent
 
 SECRET_KEY = os.getenv('SECRET_KEY')
 
-DEBUG = os.getenv('DEBUG', 'False')
+DEBUG = os.getenv('DEBUG', 'True')
 
 ALLOWED_HOSTS = ['*']
 
@@ -136,8 +136,7 @@ EMAIL_USE_TLS = os.getenv("EMAIL_USE_TLS")
 EMAIL_HOST_USER = os.getenv("EMAIL_HOST_USER", "fabricadesoftware.araquari@ifc.edu.br")
 EMAIL_HOST_PASSWORD = os.getenv("EMAIL_HOST_PASSWORD")
 
-
-CELERY_BROKER_URL = 'amqp://joao:batata12@localhost:5672//'
+CELERY_BROKER_URL = os.getenv('CELERY_BROKER_URL')
 
 CELERY_RESULT_BACKEND = "django-db"
 
