@@ -130,7 +130,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = 'static/'
+STATIC_URL = os.getenv("STATIC_URL", "/static/")
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
@@ -212,4 +212,4 @@ cloudinary.config(
     api_secret=API_SECRET
 )
 
-STATIC_ROOT = os.path.join(BASE_DIR, 'staticfiles')
+STATIC_ROOT = os.path.join(BASE_DIR, "static")
