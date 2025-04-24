@@ -2,6 +2,8 @@ FROM python:3.13
 
 ENV PYTHONUNBUFFERED=1
 
+COPY . /app/
+
 WORKDIR /app
 
 RUN apt-get update && \
@@ -10,15 +12,10 @@ RUN apt-get update && \
 
 RUN pip install pdm
 
-COPY pyproject.toml pdm.lock* /app/
-COPY README.md /app/README.md
-
 RUN pdm install
 
-COPY . /app
+RUN pdm migrate
 
 EXPOSE 8000
-
-RUN pdm migrate
 
 CMD ["pdm", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
