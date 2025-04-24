@@ -19,8 +19,6 @@ COPY . /app
 
 EXPOSE 8000
 
-RUN pdm makemigrations
-
 RUN pdm migrate
 
 CMD ["pdm", "run", "python", "manage.py", "runserver", "0.0.0.0:8000"]
