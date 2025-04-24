@@ -32,6 +32,10 @@ build-backend = "pdm.backend"
 [tool.pdm]
 distribution = true
 
+[[tool.pdm.autoexport]]
+filename = "requirements.txt"
+without-hashes = "true"
+
 [tool.pdm.scripts]
 dev = "python manage.py runserver"
 runserver = "python manage.py runserver"

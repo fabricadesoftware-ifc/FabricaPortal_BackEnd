@@ -1,8 +1,6 @@
-FROM python:3.13
+FROM python:3.13-slim
 
 ENV PYTHONUNBUFFERED=1
-
-COPY . /app/
 
 WORKDIR /app
 
@@ -10,11 +8,15 @@ RUN apt-get update && \
     apt-get install -y build-essential curl && \
     rm -rf /var/lib/apt/lists/*
 
-RUN pip install pdm
+RUN pip install pdm && \
+    pdm config python.use_venv false
+
+COPY pyproject.toml pdm.lock* /app/
+COPY README.md /app/
 
 RUN pdm install
 
-RUN pdm migrate
+COPY . /app/
 
 EXPOSE 8000
 
