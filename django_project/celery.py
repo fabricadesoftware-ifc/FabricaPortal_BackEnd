@@ -6,7 +6,7 @@ os.environ.setdefault('DJANGO_SETTINGS_MODULE', 'django_project.settings')
 
 app = Celery('django_project')
 
-app.conf.broker_url =os.getenv('CELERY_BROKER_URL')
+app.conf.broker_url = os.getenv("RABBITMQ_URL")
 
 app.conf.broker_connection_retry_on_startup = True
 
