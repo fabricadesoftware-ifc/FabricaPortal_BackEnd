@@ -1,4 +1,5 @@
 import os
+from django.conf import settings
 from django.core.mail import send_mail
 from django_project.settings import EMAIL_HOST_USER, BASE_DIR
 from django.utils.html import strip_tags
@@ -14,7 +15,7 @@ def send_verification_code(userid, code):
         user = User.objects.get(id=userid)
         print(userid)
         print(user.email)
-        link = f'http://localhost:8000/api/verify-user?email={user.email}&code={code}'
+        link = f'{settings.BASE_URL}verify-user?email={user.email}&code={code}'
         with open(os.path.join(BASE_DIR, 'core/authentication/templates/email.html'), 'r') as file:
             html = file.read()
             html = html.replace('link', link)
@@ -24,7 +25,7 @@ def send_verification_code(userid, code):
 
         plain_message = strip_tags(html)
         from_email = EMAIL_HOST_USER
-        recipient_list = ['jonatassilvaperaza@gmail.com']
+        recipient_list = [user.email]
         
         result = send_mail(
             'Verificação de conta',

@@ -131,6 +131,8 @@ USE_TZ = True
 
 STATIC_URL = "static/"
 
+BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SIMPLE_JWT = {
