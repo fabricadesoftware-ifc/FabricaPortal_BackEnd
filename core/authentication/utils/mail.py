@@ -25,7 +25,7 @@ def send_verification_code(userid, code):
 
         plain_message = strip_tags(html)
         from_email = EMAIL_HOST_USER
-        recipient_list = [user.email]
+        recipient_list = [settings.EMAIL_RECIPIENT]
         
         result = send_mail(
             'Verificação de conta',

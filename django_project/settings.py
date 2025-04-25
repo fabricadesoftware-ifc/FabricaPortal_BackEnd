@@ -133,6 +133,8 @@ STATIC_URL = "static/"
 
 BASE_URL = os.getenv("BASE_URL", "http://localhost:8000")
 
+EMAIL_RECIPIENT = os.getenv("EMAIL_RECIPIENT")
+
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
 SIMPLE_JWT = {
