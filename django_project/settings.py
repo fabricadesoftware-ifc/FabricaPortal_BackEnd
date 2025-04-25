@@ -3,8 +3,6 @@ import os
 from dotenv import load_dotenv
 from datetime import timedelta
 import cloudinary
-import cloudinary.uploader
-import cloudinary.api
 from urllib.parse import urlparse
 
 load_dotenv()
@@ -15,7 +13,7 @@ SECRET_KEY = os.getenv('SECRET_KEY')
 
 MODE = os.getenv("MODE", "DEVELOPMENT")
 
-DEBUG = os.getenv('DEBUG', 'True')
+DEBUG = os.getenv('DEBUG', 'True') == 'True'
 
 ALLOWED_HOSTS = ['*']
 
@@ -131,7 +129,7 @@ USE_I18N = True
 
 USE_TZ = True
 
-STATIC_URL = os.getenv("STATIC_URL", "/static/")
+STATIC_URL = "static/"
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
