@@ -17,7 +17,7 @@ urlpatterns = [
     path('', RedirectView.as_view(url='/api/', permanent=True)),
     path('admin/', admin.site.urls),
     path('api/', include(router.urls)),
-    path('api/verify-user/', VerifyUserView.as_view(), name='verify_user'),
+    path('api/verify-user', VerifyUserView.as_view(), name='verify_user'),
     path('api/token/', TokenObtainPairView.as_view(), name='token_obtain_pair'),
     path('api/token/refresh/', TokenRefreshView.as_view(), name='token_refresh'),
 ]
