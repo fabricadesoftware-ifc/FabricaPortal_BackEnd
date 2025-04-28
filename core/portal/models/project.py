@@ -13,12 +13,12 @@ class Project(models.Model):
     
     name = models.CharField(max_length=255)
     initial_date = models.DateField(auto_now_add=False)
-    final_date = models.DateField(auto_now_add=False)
-    areas = models.JSONField()
+    final_date = models.DateField(auto_now_add=False, null=True, blank=True)
+    areas = models.JSONField(null=True, blank=True)
     advisor = models.ForeignKey(Member, on_delete=models.PROTECT, related_name='advisor')
     members = models.ManyToManyField(Member)
 
-    state = models.CharField(max_length=255, choices=StateChoices)
+    state = models.CharField(max_length=255, choices=StateChoices.choices)
     image = models.ForeignKey(
         Image,
         related_name="+",
@@ -27,8 +27,8 @@ class Project(models.Model):
         blank=True,
         default=None,
     )    
-    links = models.JSONField() # two fields: type and URL
-    about = models.TextField()
+    links = models.JSONField(null=True, blank=True)
+    about = models.TextField(null=True, blank=True)
     
     
     def __str__(self):

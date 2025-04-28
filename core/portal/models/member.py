@@ -15,10 +15,10 @@ class Member(models.Model):
         EGRESSO = 'Egresso'
     
     name = models.CharField(max_length=255)
-    social_media = models.JSONField()
+    social_media = models.JSONField(null=True, blank=True)
     type = models.CharField(max_length=20, choices=TypeChoices)
     status = models.CharField(max_length=20, choices=StateChoices)
-    biography = models.TextField()
+    biography = models.TextField(null=True, blank=True)
     image = models.ForeignKey(
         Image,
         related_name="+",
