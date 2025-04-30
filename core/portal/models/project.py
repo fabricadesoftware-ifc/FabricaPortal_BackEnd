@@ -12,7 +12,7 @@ class Project(models.Model):
         CANCELADO = 'Cancelado'
     
     name = models.CharField(max_length=255)
-    initial_date = models.DateField(auto_now_add=False)
+    initial_date = models.DateField(auto_now_add=False, null=True, blank=True)
     final_date = models.DateField(auto_now_add=False, null=True, blank=True)
     areas = models.JSONField(null=True, blank=True)
     advisor = models.ForeignKey(Member, on_delete=models.PROTECT, related_name='advisor')
