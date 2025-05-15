@@ -15,7 +15,9 @@ class Member(models.Model):
         EGRESSO = 'Egresso'
     
     name = models.CharField(max_length=255)
-    social_media = models.JSONField()
+    linkedin = models.URLField(max_length=255, null=True, blank=True)
+    github = models.URLField(max_length=255, null=True, blank=True)
+    instagram = models.URLField(max_length=255, null=True, blank=True)
     type = models.CharField(max_length=20, choices=TypeChoices)
     status = models.CharField(max_length=20, choices=StateChoices)
     biography = models.TextField()

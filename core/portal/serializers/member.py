@@ -15,16 +15,16 @@ class MemberListSerializer(serializers.ModelSerializer):
     image = ImageUploadSerializer(required=False, read_only=True)
     class Meta:
         model = Member
-        fields = ['id', 'name', 'type', 'status', 'image_attachment_key', 'image', 'biography']
+        fields = ['id', 'name', 'type', 'status', 'image_attachment_key', 'image', 'biography', 'linkedin', 'github', 'instagram']
         
 class MemberWriteSerializer(serializers.ModelSerializer):
     
     class Meta:
         model = Member
-        fields = ['name', 'social_media', 'type', 'status', 'biography', 'image']
+        fields = ['name', 'type', 'status', 'biography', 'image']
         
 class MemberDetailSerializer(serializers.ModelSerializer):
     image = ImageUploadSerializer(required=False)
     class Meta:
         model = Member
-        fields = ['id', 'name', 'social_media', 'type', 'status', 'biography', 'image']
+        fields = ['id', 'name', 'type', 'status', 'biography', 'image', 'linkedin', 'github', 'instagram']

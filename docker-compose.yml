@@ -8,6 +8,7 @@ services:
     environment:
       - DJANGO_SETTINGS_MODULE=${DJANGO_SETTINGS_MODULE}
       - CELERY_BROKER_URL=${CELERY_BROKER_URL}
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     command: pdm run python manage.py runserver 0.0.0.0:8000
     volumes:
       - .:/app
@@ -15,6 +16,7 @@ services:
       - "8000:8000"
     depends_on:
       - rabbitmq
+      - db
 
   celery:
     build: .
@@ -23,10 +25,12 @@ services:
     command: pdm run python -m celery -A django_project worker --loglevel=info
     environment:
       - CELERY_BROKER_URL=${CELERY_BROKER_URL}
+      - DATABASE_URL=postgres://${POSTGRES_USER}:${POSTGRES_PASSWORD}@db:5432/${POSTGRES_DB}
     volumes:
       - .:/app
     depends_on:
       - rabbitmq
+      - db
 
   rabbitmq:
     image: rabbitmq:3-management
@@ -38,3 +42,21 @@ services:
     ports:
       - "5672:5672"
       - "15672:15672"
+
+  db:
+    image: postgres:15
+    restart: always
+    env_file:
+      - .env
+    environment:
+      POSTGRES_DB: ${POSTGRES_DB}
+      POSTGRES_USER: ${POSTGRES_USER}
+      POSTGRES_PASSWORD: ${POSTGRES_PASSWORD}
+    volumes:
+      - pgdata:/var/lib/postgresql/data
+      - ./dump.sql:/docker-entrypoint-initdb.d/dump.sql:ro
+    ports:
+      - "5432:5432"
+
+volumes:
+  pgdata:
