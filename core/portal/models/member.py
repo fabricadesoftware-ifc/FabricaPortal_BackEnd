@@ -15,11 +15,12 @@ class Member(models.Model):
         EGRESSO = 'Egresso'
     
     name = models.CharField(max_length=255)
-    email = models.EmailField(null=True, blank=True)
-    social_media = models.JSONField(null=True, blank=True)
+    linkedin = models.URLField(max_length=255, null=True, blank=True)
+    github = models.URLField(max_length=255, null=True, blank=True)
+    instagram = models.URLField(max_length=255, null=True, blank=True)
     type = models.CharField(max_length=20, choices=TypeChoices)
     status = models.CharField(max_length=20, choices=StateChoices)
-    biography = models.TextField(null=True, blank=True)
+    biography = models.TextField()
     image = models.ForeignKey(
         Image,
         related_name="+",

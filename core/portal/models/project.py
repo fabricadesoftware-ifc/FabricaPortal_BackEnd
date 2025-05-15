@@ -1,7 +1,7 @@
 from django.db import models
 from django.utils.translation import gettext_lazy as _
 
-from core.portal.models import Member
+from core.portal.models import Member, Area
 from core.uploader.models import Image
 
 class Project(models.Model):
@@ -12,23 +12,22 @@ class Project(models.Model):
         CANCELADO = 'Cancelado'
     
     name = models.CharField(max_length=255)
-    initial_date = models.DateField(auto_now_add=False, null=True, blank=True)
-    final_date = models.DateField(auto_now_add=False, null=True, blank=True)
-    areas = models.JSONField(null=True, blank=True)
+    initial_date = models.DateField(auto_now_add=False)
+    final_date = models.DateField(auto_now_add=False)
+    technologies = models.ManyToManyField(Area)
     advisor = models.ForeignKey(Member, on_delete=models.PROTECT, related_name='advisor')
     members = models.ManyToManyField(Member)
 
-    state = models.CharField(max_length=255, choices=StateChoices.choices)
-    image = models.ForeignKey(
+    state = models.CharField(max_length=255, choices=StateChoices)
+    images = models.ManyToManyField(
         Image,
         related_name="+",
-        on_delete=models.CASCADE,
         null=True,
         blank=True,
         default=None,
     )    
-    links = models.JSONField(null=True, blank=True)
-    about = models.TextField(null=True, blank=True)
+    links = models.JSONField()
+    about = models.TextField()
     
     
     def __str__(self):

@@ -2,7 +2,10 @@
 name = "FabricaPortal_BackEnd"
 version = "0.1.0"
 description = "Default template for PDM package"
-authors = [{ name = "jonatasperaza", email = "jonatassilvaperaza@gmail.com" }]
+authors = [
+    { name = "jonatasperaza", email = "jonatassilvaperaza@gmail.com" },
+    { name = "AnthonyLoche", email = "anthonylocheifc@gmail.com" }
+]
 dependencies = [
     "django>=5.1.6",
     "djangorestframework>=3.15.2",
