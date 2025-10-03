@@ -4,3 +4,4 @@ from .member import Member
 from .course_member import CourseMember
 from .project import Project
 from .new import New
+from .tag import Tag
