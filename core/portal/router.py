@@ -1,9 +1,10 @@
 from rest_framework.routers import DefaultRouter
 
 
-from core.portal.views import AreaViewSet, CourseMemberViewSet, CourseViewSet, MemberViewSet, ProjectViewSet, NewViewSet, TagViewSet
+from core.portal.views import AccessViewSet, AreaViewSet, CourseMemberViewSet, CourseViewSet, MemberViewSet, ProjectViewSet, NewViewSet, TagViewSet
 
 portal_router = DefaultRouter()
+portal_router.register(r'access', AccessViewSet)
 portal_router.register(r'areas', AreaViewSet)
 portal_router.register(r'courses', CourseViewSet)
 portal_router.register(r'course_members', CourseMemberViewSet)

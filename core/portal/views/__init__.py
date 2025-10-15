@@ -1,4 +1,5 @@
 from .area import AreaViewSet
+from .access import AccessViewSet
 from .course import CourseViewSet
 from .course_member import CourseMemberViewSet
 from .member import MemberViewSet
