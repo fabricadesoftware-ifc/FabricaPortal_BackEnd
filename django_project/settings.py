@@ -4,6 +4,7 @@ from dotenv import load_dotenv
 from datetime import timedelta
 import cloudinary
 from urllib.parse import urlparse
+import dj_database_url
 
 load_dotenv()
 
@@ -74,24 +75,11 @@ WSGI_APPLICATION = 'django_project.wsgi.application'
 
 DATABASE_URL = urlparse(os.getenv("DATABASE_URL"))
 
-if MODE in ["PRODUCTION", "MIGRATE"]:
-    DATABASES = {
-        "default": {
-            "ENGINE": "django.db.backends.postgresql",
-            "NAME": DATABASE_URL.path.replace("/", ""),
-            "USER": DATABASE_URL.username,
-            "PASSWORD": DATABASE_URL.password,
-            "HOST": DATABASE_URL.hostname,
-            "PORT": 5432,
-        }
-    }
-else:
-    DATABASES = {
-        'default': {
-            'ENGINE': 'django.db.backends.sqlite3',
-            'NAME': BASE_DIR / 'db.sqlite3',
-        }
-    }
+DATABASES = {
+    "default": dj_database_url.config(
+        default=os.getenv("DATABASE_URL", "sqlite:///db.sqlite3")
+    )
+}
 
 
 AUTH_PASSWORD_VALIDATORS = [

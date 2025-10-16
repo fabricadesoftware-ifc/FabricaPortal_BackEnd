@@ -5,8 +5,8 @@ from core.authentication.models import User
 class UserSerializer(serializers.ModelSerializer):
     class Meta:
         model = User
-        fields = ['id', 'email', 'name', 'date_joined', 'last_login', 'is_verified', 'password']
-        read_only_fields = ['id', 'date_joined', 'last_login', 'is_verified']
+        fields = ['id', 'email', 'name', 'date_joined', 'last_login']
+        read_only_fields = ['id', 'date_joined', 'last_login', 'date_joined']
 
     def validate_email(self, value):
         if User.objects.filter(email=value).exists():

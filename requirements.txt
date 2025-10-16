@@ -12,6 +12,7 @@ click-plugins==1.1.1
 click-repl==0.3.0
 cloudinary==1.42.2
 colorama==0.4.6; platform_system == "Windows"
+dj-database-url==3.0.1
 django==5.1.6
 django-celery-results==2.5.1
 django-cors-headers==4.7.0

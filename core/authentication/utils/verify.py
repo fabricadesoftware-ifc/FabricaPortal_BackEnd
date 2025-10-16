@@ -1,6 +1,5 @@
 from core.authentication.models import User
 from core.authentication.utils.mail import send_verification_code
-from rest_framework import response, status
 import secrets
 import logging
 
