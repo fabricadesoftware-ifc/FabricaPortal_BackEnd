@@ -6,3 +6,4 @@ from .project import Project
 from .new import New
 from .tag import Tag
 from .access import Access
+from .member_tag import MembrerTag
