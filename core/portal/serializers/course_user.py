@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from core.portal.models import CourseMember
+from core.portal.models import CourseUser
 
-class CourseMemberSerializer(serializers.ModelSerializer):
+class CourseUserSerializer(serializers.ModelSerializer):
     class Meta:
-        model = CourseMember
-        fields = ['id', 'member', 'course', 'initial_year', 'final_year']
+        model = CourseUser
+        fields = ['id', 'user', 'course', 'initial_year', 'final_year']
         
     def validate(self, value):
         if value['initial_year'] > value['final_year']:

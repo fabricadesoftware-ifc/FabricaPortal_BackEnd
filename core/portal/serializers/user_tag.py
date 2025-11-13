@@ -1,11 +1,11 @@
 from rest_framework import serializers
 
-from core.portal.models.member_tag import MembrerTag
+from core.portal.models.user_tag import UserTag
 
-class MemberTagSerializer(serializers.ModelSerializer):
+class UserTagSerializer(serializers.ModelSerializer):
     class Meta:
-        model = MembrerTag
-        fields = ['id', 'member', 'tag', 'initial_date', 'final_date']
+        model = UserTag
+        fields = ['id', 'user', 'tag', 'initial_date', 'final_date']
 
     def validate(self, value):
         if value['initial_date'] > value['final_date']:
