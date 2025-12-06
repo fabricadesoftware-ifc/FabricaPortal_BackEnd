@@ -6,3 +6,4 @@ from .new import NewDetailSerializer, NewListSerializer, NewWriteSerializer
 from .tag import TagSerializer
 from .user_tag import UserTagSerializer
 from .esp_tag import EspTagSerializer
+from .system import SystemInfoSerializer

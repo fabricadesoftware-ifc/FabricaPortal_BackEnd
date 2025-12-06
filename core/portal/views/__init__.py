@@ -7,3 +7,4 @@ from .user_tag import UserTagViewSet
 from .project import ProjectViewSet
 from .new import NewViewSet
 from .tag import TagViewSet
+from .system import SystemViewSet
